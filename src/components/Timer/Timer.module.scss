@@ -1,0 +1,250 @@
+@import '../../variables.css';
+
+.container {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+
+  * {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: xx-large;
+  }
+
+  button {
+    background-color: var(--main-color);
+  }
+
+  .mainTimer {
+    position: relative;
+
+    .time {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--main-color);
+      z-index: 3;
+    }
+
+    .progressWrapper {
+      position: relative;
+      width: 300px;
+      height: 300px;
+
+      .progressBar {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background-color: white;
+        background: radial-gradient(
+            closest-side,
+            black 90%,
+            transparent 100% 100%
+          ),
+          conic-gradient(var(--main-color) var(--progress), transparent 0%);
+        z-index: 2;
+        // box-shadow: var(--main-color) 0px 0px 20px 1px;
+      }
+
+      .progressBarSecond {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background-color: white;
+        background: radial-gradient(
+            closest-side,
+            black 88%,
+            transparent 100% 100%
+          ),
+          conic-gradient(rgb(133, 133, 133) 100%, transparent 0%);
+        // box-shadow: red 0px 0px 20px 1px;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.buttonContainer {
+  margin: 30px 0 5px 0;
+
+  .resetBtn {
+    text-align: center;
+    animation-name: resetWiden;
+    animation-duration: 1s;
+  }
+
+  .resetBtnHidden {
+    width: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 0px;
+    animation-name: resetShorten;
+    animation-duration: 1s;
+  }
+
+  .startBtn {
+    width: 280px;
+    animation-name: widen;
+    animation-duration: 1s;
+  }
+
+  .startBtnShort {
+    width: 130px;
+    animation-name: shorten;
+    animation-duration: 1s;
+  }
+
+  @keyframes shorten {
+    0% {
+      width: 280px;
+    }
+    100% {
+      width: 130px;
+    }
+  }
+
+  @keyframes widen {
+    0% {
+      width: 130px;
+    }
+    100% {
+      width: 280px;
+    }
+  }
+
+  @keyframes resetShorten {
+    0% {
+      width: 130px;
+      padding: 17px 40px;
+      margin: 10px;
+      width: 130px;
+      font-size: 15px;
+    }
+    100% {
+      font-size: 0px;
+      width: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 0px;
+    }
+  }
+
+  @keyframes resetWiden {
+    0% {
+      width: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 0px;
+      font-size: 0px;
+    }
+    100% {
+      width: 130px;
+      padding: 17px 40px;
+      margin: 10px;
+      width: 130px;
+      font-size: 15px;
+    }
+  }
+
+  button {
+    width: 130px;
+    text-align: center;
+    padding: 17px 40px;
+    margin: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: rgb(190, 190, 190);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      text-align: center;
+
+      letter-spacing: 3px;
+      background-color: var(--main-color);
+      color: hsl(0, 0%, 100%);
+      box-shadow: var(--main-color) 0px 7px 29px 0px;
+    }
+
+    &:active {
+      text-align: center;
+
+      letter-spacing: 3px;
+      background-color: var(--main-color);
+      color: hsl(0, 0%, 100%);
+      box-shadow: var(--main-color) 0px 0px 0px 0px;
+      transform: translateY(5px);
+      transition: 100ms;
+    }
+  }
+}
+
+.inputContainer {
+  display: flex;
+
+  .inputTitle {
+    color: white;
+    font-size: 12px;
+    width: 150px;
+    text-align: center;
+  }
+  .inputWrapper {
+    width: 130px;
+    padding: 3px 14px;
+    margin: 10px;
+    border-radius: 40px;
+    cursor: pointer;
+    border: 0;
+    background-color: rgb(190, 190, 190);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      text-align: center;
+      background: none;
+      outline: none;
+      border: none;
+      font-size: 23px;
+      width: 2.5rem;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgb(117, 117, 117);
+      transition: all 0.2s ease-in;
+
+      &:hover {
+        color: var(--main-color);
+      }
+    }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
+}
